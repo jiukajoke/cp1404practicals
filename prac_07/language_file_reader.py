@@ -15,7 +15,7 @@ def main():
     languages = []
     # Open the file for reading
     in_file = open('languages.csv', 'r')
-    # File format is like: Language,Typing,Reflection,Year
+    # File format is like: Language,Typing,Reflection,Year,Pointer Arithmetic
     # 'Consume' the first line (header) - we don't need its contents
     in_file.readline()
     # All other lines are language data
@@ -26,9 +26,11 @@ def main():
         # print(parts)  # debugging
         # Reflection is stored as a string (Yes/No) and we want a Boolean
         reflection = parts[2] == "Yes"
+        # Pointer Arithmetic is also stored as a string (Yes/No)
+        pointer_arithmetic = parts[4] == "Yes"
         # Construct a ProgrammingLanguage object using the elements
         # year should be an int
-        language = ProgrammingLanguage(parts[0], parts[1], reflection, int(parts[3]))
+        language = ProgrammingLanguage(parts[0], parts[1], reflection, int(parts[3]), pointer_arithmetic)
         # Add the language we've just constructed to the list
         languages.append(language)
     # Close the file as soon as we've finished reading it
